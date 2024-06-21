@@ -17,7 +17,7 @@ const PostPage = () => {
     const post = data?.post;
 
     return (
-        <div className="bg-white w-3/4 mx-auto my-12 p-4 text-black rounded-lg">
+        <div className="bg-white w-4/5 mx-auto my-12 p-4 text-black rounded-lg">
             {loading ? (
                 <LoadingPost />
             ) : (
