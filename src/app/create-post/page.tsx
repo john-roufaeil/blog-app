@@ -3,20 +3,12 @@ import Link from 'next/link';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import { TextField, Button } from '@mui/material';
 import { useState } from 'react';
-import { handleClear, validateForm } from '@/utils/formUtils';
+import { handleClearForm, handleCreatePost } from '@/utils/formUtils';
 
 const CreatePostPage = () => {
     const [email, setEmail] = useState("");
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
-
-    function handleCreate(event: any) {
-        event.preventDefault();
-        const result = validateForm(email, title, body)
-        console.log(result);
-        if (result === '')
-            console.log('Post created:', { email, title, body });
-    }
 
     return (
         <div className="bg-white w-4/5 mx-auto my-12 p-4 text-black rounded-lg">
@@ -28,7 +20,7 @@ const CreatePostPage = () => {
                     <h1 className="text-primary text-2xl">Create a New Post</h1>
                 </div>
             </div>
-            <form className='m-8' onSubmit={handleCreate}>
+            <form className='m-8' onSubmit={handleCreatePost(email, title, body)}>
                 <div className='flex flex-col md:flex-row md:justify-between mb-8 space-y-8 md:space-y-0'>
                     <TextField
                         id="email-field"
@@ -62,7 +54,13 @@ const CreatePostPage = () => {
                 />
 
                 <div className='flex flex-col md:flex-row space-y-4 md:space-y-0 justify-evenly mt-12'>
-                    <Button variant="outlined" size="large" onClick={() => handleClear([setEmail, setTitle, setBody])}>Clear Form</Button>
+                    <Button
+                        variant="outlined"
+                        size="large"
+                        onClick={() => handleClearForm([setEmail, setTitle, setBody])}
+                    >
+                        Clear Form
+                    </Button>
                     <Button type="submit" variant="contained" size="large">Create Post</Button>
                 </div>
             </form>
