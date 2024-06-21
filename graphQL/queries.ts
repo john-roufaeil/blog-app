@@ -34,6 +34,7 @@ export const GET_COMMENTS = gql`
 export const GET_HOMEPAGE = gql`
     query Homepage {
         posts {
+            id,
             title,
             body,
             comments {
@@ -46,8 +47,8 @@ export const GET_HOMEPAGE = gql`
     }`;
 
 export const GET_DETAILS = gql`
-    query Details {
-        posts {
+    query Details($id: String!) {
+        post(id: $id) {
             title,
             body,
             comments {

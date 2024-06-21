@@ -5,8 +5,8 @@ import fetch from 'node-fetch';
 
 const typeDefs = gql`
   type Post {
-    userId: Int
-    id: Int
+    userId: String
+    id: String
     title: String
     body: String
     user: User
@@ -14,15 +14,15 @@ const typeDefs = gql`
   }
 
   type User {
-    id: Int
+    id: String
     name: String
     username: String
     email: String
   }
 
   type Comment {
-    postId: Int
-    id: Int
+    postId: String
+    id: String
     name: String
     email: String
     body: String
@@ -30,6 +30,7 @@ const typeDefs = gql`
 
   type Query {
     posts: [Post]
+    post(id: String!): Post
     users: [User]
     comments: [Comment]
   }
@@ -39,6 +40,10 @@ const resolvers = {
     Query: {
         posts: async () => {
             const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+            return response.json();
+        },
+        post: async (_, { id }) => {
+            const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
             return response.json();
         },
         users: async () => {
