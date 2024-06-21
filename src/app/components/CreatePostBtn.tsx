@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function CreatePostBtn() {
     return (
         <Link href={`/create-post`}
-            className="border-grey-50 rounded-lg border-2 sm:w-1/4 h-64 m-4
+            className="border-grey-50 rounded-lg border-2 w-full lg:w-1/4  h-64 m-4
         hover:border-primary hover:cursor-pointer transition-colors duration-50
         hover:bg-orange-50  group">
             <div className=' p-4 flex flex-col items-center justify-center border-transparent

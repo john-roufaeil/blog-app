@@ -33,10 +33,9 @@ const PostPage = () => {
                     </div>
                     <div className='mx-12'>
                         <p className='text-lg mb-12'>{post?.body}</p>
-                        {/* <hr className="border-6 border-black" /> */}
                         {data.post.comments.map((comment) => (
-                            <div className='bg-gray-100 rounded-lg my-4 p-4 w-3/4' key={comment.id}>
-                                <p className='font-mono'> Comment by {comment.email}</p>
+                            <div className='bg-gray-100 rounded-lg my-4 p-4 md:w-3/4 w-full' key={comment.id}>
+                                <p className='font-mono overflow-clip'> Comment by {comment.email}</p>
                                 <p className=''> {comment.body} </p>
                             </div>
                         ))}
