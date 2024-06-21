@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 
 export default function Card() {
     return (
-        <div className="border-grey-50 rounded-lg border-2 w-1/4 h-64 m-4
+        <div className="border-grey-50 rounded-lg border-2 sm:w-1/4 h-64 m-4
         hover:border-primary hover:cursor-pointer transition-colors duration-50
         hover:bg-orange-50  group">
             <div className=' p-4 flex flex-col align-between justify-between border-transparent
