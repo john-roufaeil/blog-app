@@ -1,10 +1,17 @@
+'use client';
 import Image from "next/image";
 import { useQuery } from '@apollo/client';
 import Stats from "./components/Stats"
+import { GET_HOMEPAGE } from './../../graphQL/queries';
 import CreatePostBtn from "./components/CreatePostBtn";
 import Card from "./components/Card";
 
 export default function Home() {
+    const { loading, error, data } = useQuery(GET_HOMEPAGE);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
+
     return (
         <main>
             <div className="relative isolate overflow-hidden pt-24 sm:pt-32 bg-primary">
@@ -20,11 +27,15 @@ export default function Home() {
             </div>
             <div className="bg-white w-4/5 mx-auto my-12 p-4 rounded-lg flex flex-wrap justify-evenly">
                 <CreatePostBtn />
+                {data.posts.map((post) => (
+                    <Card key={post.id} post={post} />
+                ))}
+                {/* <CreatePostBtn />
                 <Card />
                 <Card />
                 <Card />
                 <Card />
-                <Card />
+                <Card /> */}
                 {/* List of Blogs */}
             </div>
         </main>

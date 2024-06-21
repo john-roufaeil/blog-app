@@ -2,7 +2,8 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 
 
-export default function Card() {
+export default function Card({ post }) {
+    const { title, email, body, comments } = post;
     return (
         <div className="border-grey-50 rounded-lg border-2 sm:w-1/4 h-64 m-4
         hover:border-primary hover:cursor-pointer transition-colors duration-50
@@ -10,11 +11,11 @@ export default function Card() {
             <div className=' p-4 flex flex-col align-between justify-between border-transparent
              group-hover:border-primary border-2 w-full h-full'>
                 <div>
-                    <p className="font-semibold text-secondary text-lg group-hover:text-primary">Title</p>
-                    <p className="font-mono"> @username </p>
-                    <p className="text-wrap h-1/"> Voluptates, accusantiuasdfasdfsadfsadfm sint laudantium fugiat debitis in vitae libero explicabo cum totam illo.</p>
+                    <p className="font-semibold text-secondary text-lg group-hover:text-primary">{title}</p>
+                    <p className="font-mono"> {email}  </p>
+                    <p className="text-wrap h-1/"> {body.slice(0, 100)} </p>
                 </div>
-                <p className="">... comments</p>
+                <p className=""> {comments.length} comments</p>
             </div>
         </div >
     );
