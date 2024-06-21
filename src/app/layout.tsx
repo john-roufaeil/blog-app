@@ -9,7 +9,7 @@ import { SnackbarProvider } from "@/context/SnackbarContext";
 const inter = Inter({ subsets: ["latin"] });
 const ApolloProvider = dynamic(() => import('../../lib/ApolloProvider'), { ssr: false });
 export const metadata: Metadata = {
-    title: "BlogByte",
+    title: "BlogBytes",
     description: "Sharing thoughts",
 };
 
@@ -20,6 +20,9 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
+            <head>
+                <link rel="icon" href="../../../logo.png" />
+            </head>
             <body className={`${inter.className} bg-primary`}>
                 <ApolloProvider>
                     <ThemeProvider theme={theme}>
