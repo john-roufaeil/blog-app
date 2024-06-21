@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import "./globals.css";
 import theme from './../theme';
 import { ThemeProvider } from '@mui/material/styles';
+import { SnackbarProvider } from "@/context/SnackbarContext";
 
 const inter = Inter({ subsets: ["latin"] });
 const ApolloProvider = dynamic(() => import('../../lib/ApolloProvider'), { ssr: false });
@@ -22,7 +23,9 @@ export default function RootLayout({
             <body className={`${inter.className} bg-primary`}>
                 <ApolloProvider>
                     <ThemeProvider theme={theme}>
-                        {children}
+                        <SnackbarProvider>
+                            {children}
+                        </SnackbarProvider>
                     </ThemeProvider>,
                 </ApolloProvider>
             </body>
