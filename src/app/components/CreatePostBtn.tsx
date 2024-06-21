@@ -1,6 +1,5 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-// import PlusCircle
 import { PlusCircleIcon } from '@heroicons/react/24/outline'
 
 export default function CreatePostBtn() {
