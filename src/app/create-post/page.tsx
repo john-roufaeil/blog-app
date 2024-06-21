@@ -3,16 +3,19 @@ import Link from 'next/link';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import { TextField, Button } from '@mui/material';
 import { useState } from 'react';
+import { handleClear, validateForm } from '@/utils/formUtils';
 
 const CreatePostPage = () => {
     const [email, setEmail] = useState("");
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
 
-    function handleClear() {
-        setEmail("");
-        setTitle("");
-        setBody("");
+    function handleCreate(event: any) {
+        event.preventDefault();
+        const result = validateForm(email, title, body)
+        console.log(result);
+        if (result === '')
+            console.log('Post created:', { email, title, body });
     }
 
     return (
@@ -25,11 +28,12 @@ const CreatePostPage = () => {
                     <h1 className="text-primary text-2xl">Create a New Post</h1>
                 </div>
             </div>
-            <form className='m-8'>
+            <form className='m-8' onSubmit={handleCreate}>
                 <div className='flex flex-col md:flex-row md:justify-between mb-8 space-y-8 md:space-y-0'>
                     <TextField
                         id="email-field"
                         label="Email"
+                        type="text"
                         variant="filled"
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
@@ -38,6 +42,7 @@ const CreatePostPage = () => {
                     <TextField
                         id="title-field"
                         label="Post Title"
+                        type="text"
                         variant="filled"
                         value={title}
                         onChange={(event) => setTitle(event.target.value)}
@@ -48,6 +53,7 @@ const CreatePostPage = () => {
                     className="w-full"
                     id="filled-multiline-static"
                     label="Post Body"
+                    type="text"
                     multiline
                     rows={4}
                     variant="filled"
@@ -56,8 +62,8 @@ const CreatePostPage = () => {
                 />
 
                 <div className='flex flex-col md:flex-row space-y-4 md:space-y-0 justify-evenly mt-12'>
-                    <Button variant="outlined" size="large" onClick={() => handleClear()}>Clear Form</Button>
-                    <Button variant="contained" size="large">Create Post</Button>
+                    <Button variant="outlined" size="large" onClick={() => handleClear([setEmail, setTitle, setBody])}>Clear Form</Button>
+                    <Button type="submit" variant="contained" size="large">Create Post</Button>
                 </div>
             </form>
         </div >
