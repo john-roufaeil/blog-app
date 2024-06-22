@@ -39,7 +39,7 @@ export default function PostPage() {
                         <div>
                             <h1 className="text-primary text-2xl uppercase">{post?.title}</h1>
                             <p className="font-mono">
-                                Posted by
+                                Posted by&nbsp;
                                 {post?.user.email}
                             </p>
                         </div>
@@ -49,7 +49,7 @@ export default function PostPage() {
                         {data.post.comments.map((comment: Comment) => (
                             <div className="bg-gray-100 rounded-lg my-4 p-4 md:w-3/4 w-full" key={comment.id}>
                                 <p className="font-mono overflow-clip">
-                                    Comment by
+                                    Comment by&nbsp;
                                     {comment.email}
                                 </p>
                                 <p>

@@ -34,7 +34,7 @@ const Card: React.FC<CardProps> = ({ post }) => {
                 </div>
                 <p className="">
                     {comments.length}
-                    comments
+                    &nbsp;comments
                 </p>
             </div>
         </Link>
