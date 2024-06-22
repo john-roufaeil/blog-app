@@ -1,9 +1,8 @@
 import { ApolloServer } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
 import { gql } from 'apollo-server';
 import fetch from 'node-fetch';
 
-const typeDefs = gql`
+export const typeDefs = gql`
   type Post {
     userId: String
     id: String
@@ -40,7 +39,7 @@ const typeDefs = gql`
   }
 `;
 
-const resolvers = {
+export const resolvers = {
     Query: {
         posts: async () => {
             const response = await fetch('https://jsonplaceholder.typicode.com/posts');
@@ -109,11 +108,29 @@ const resolvers = {
 
 };
 
-const server = new ApolloServer({
+// const server = new ApolloServer({
+//     typeDefs,
+//     resolvers,
+// });
+
+// await startStandaloneServer(server, {
+//     listen: { port: 4000 },
+// });
+
+const apolloServer = new ApolloServer({
     typeDefs,
     resolvers,
 });
 
-await startStandaloneServer(server, {
-    listen: { port: 4000 },
-});
+const startServer = apolloServer.start();
+
+export const config = {
+    api: {
+        bodyParser: false,
+    },
+};
+
+export default async function handler(req, res) {
+    await startServer;
+    await apolloServer.createHandler({ path: '/api/graphql' })(req, res);
+}

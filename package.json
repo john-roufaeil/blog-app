@@ -17,6 +17,7 @@
     "@heroicons/react": "^2.1.4",
     "@mui/material": "^5.15.20",
     "apollo-server": "^3.13.0",
+    "apollo-server-micro": "^3.13.0",
     "graphql": "^16.8.2",
     "heroicons": "^2.1.4",
     "next": "14.2.2",
