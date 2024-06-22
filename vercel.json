@@ -1,4 +1,9 @@
 {
+    "functions": {
+        "/src/api/graphql.ts": {
+            "maxDuration": 30
+        }
+    },
     "version": 2,
     "builds": [
         {
