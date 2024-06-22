@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { ApolloServer } from 'apollo-server-micro';
-import { MicroRequest } from 'apollo-server-micro/dist/types';
-import { ServerResponse, IncomingMessage } from 'http';
+// import { MicroRequest } from 'apollo-server-micro/dist/types';
+// import { ServerResponse, IncomingMessage } from 'http';
 import { typeDefs, resolvers } from '../../graphQL/server';
 
 const apolloServer = new ApolloServer({
@@ -9,7 +9,18 @@ const apolloServer = new ApolloServer({
     resolvers,
 });
 
-const startServer = apolloServer.start();
+// const startServer = apolloServer.start();
+
+// export const config = {
+//     api: {
+//         bodyParser: false,
+//     },
+// };
+
+// export default async function handler(req: MicroRequest, res: ServerResponse<IncomingMessage>) {
+//     await startServer;
+//     await apolloServer.createHandler({ path: '/api/graphql' })(req, res);
+// }
 
 export const config = {
     api: {
@@ -17,7 +28,4 @@ export const config = {
     },
 };
 
-export default async function handler(req: MicroRequest, res: ServerResponse<IncomingMessage>) {
-    await startServer;
-    await apolloServer.createHandler({ path: '/api/graphql' })(req, res);
-}
+export default apolloServer.createHandler({ path: '/api/graphql' });
