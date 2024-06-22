@@ -42,27 +42,19 @@ export const typeDefs = gql`
 export const resolvers = {
     Query: {
         posts: async (): Promise<Post[]> => {
-            console.log('Fetching posts...');
             const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-            console.log('Posts fetched:', response.json());
             return await response.json() as Post[];
         },
         post: async (_: unknown, { id }: { id: string }): Promise<Post> => {
-            console.log('Fetching post...');
             const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
-            console.log('Post fetched:', response.json());
             return await response.json() as Post;
         },
         users: async (): Promise<User[]> => {
-            console.log('Fetching users...');
             const response = await fetch('https://jsonplaceholder.typicode.com/users');
-            console.log('Users fetched:', response.json());
             return await response.json() as User[];
         },
         comments: async (): Promise<Comment[]> => {
-            console.log('Fetching comments...');
             const response = await fetch('https://jsonplaceholder.typicode.com/comments');
-            console.log('Comments fetched:', response.json());
             return await response.json() as Comment[];
         },
     },
