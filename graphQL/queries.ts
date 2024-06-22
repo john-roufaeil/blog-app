@@ -3,9 +3,7 @@ import { gql } from '@apollo/client';
 export const GET_POSTS = gql`
     query GetPosts {
         posts {
-        id
-        title
-        body
+            id
         }
     }
 `;
@@ -13,9 +11,7 @@ export const GET_POSTS = gql`
 export const GET_USERS = gql`
     query GetUsers {
         users {
-        id
-        name
-        email
+            id
         }
     }
 `;
@@ -23,10 +19,7 @@ export const GET_USERS = gql`
 export const GET_COMMENTS = gql`
     query GetComments {
         comments {
-        postId
-        id
-        name
-        body
+            id
         }
     }
 `;

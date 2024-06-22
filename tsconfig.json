@@ -32,8 +32,11 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "graphQL/server.js", "lib/apolloClient.js"  ],
+    ".next/types/**/*.ts",
+    "graphQL/server.ts",
+    "lib/apolloClient.ts",
+    "src/theme.js"
+  ],
   "exclude": [
     "node_modules"
   ]
