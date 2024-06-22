@@ -9,7 +9,8 @@ import { GET_DETAILS } from '../../../../graphQL/queries';
 import { Comment } from '../../../utils/types';
 
 export default function PostPage() {
-    const { id } = useParams();
+    const params = useParams();
+    const id = params?.id as string;
     const { data, loading, error } = useQuery(GET_DETAILS, {
         variables: { id },
     });
@@ -21,7 +22,6 @@ export default function PostPage() {
             </p>
         );
     }
-
     const post = data?.post;
 
     return (

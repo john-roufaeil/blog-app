@@ -1,3 +1,5 @@
+/* eslint-disable func-names */
+/* eslint-disable @typescript-eslint/ban-types */
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { Dispatch, SetStateAction } from 'react';
 

@@ -1,7 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/function-component-definition */
 import React from 'react';
 import Link from 'next/link';
+import { CardProps } from '../../utils/types';
 
-export default function Card({ post }) {
+const Card: React.FC<CardProps> = ({ post }) => {
     const {
         id, title, user, body, comments,
     } = post;
@@ -35,4 +39,6 @@ export default function Card({ post }) {
             </div>
         </Link>
     );
-}
+};
+
+export default Card;

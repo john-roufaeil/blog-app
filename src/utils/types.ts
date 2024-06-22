@@ -20,3 +20,7 @@ export interface User {
     username: string
     email: string
 }
+
+export interface CardProps {
+    post: Post;
+}
