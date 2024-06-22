@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import dynamic from 'next/dynamic';
-import "./globals.css";
-import theme from './../theme';
+import './globals.css';
 import { ThemeProvider } from '@mui/material/styles';
-import { SnackbarProvider } from "@/context/SnackbarContext";
+import { SnackbarProvider } from '@/context/SnackbarContext';
+import theme from '../theme';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 const ApolloProvider = dynamic(() => import('../../lib/ApolloProvider'), { ssr: false });
 export const metadata: Metadata = {
-    title: "BlogBytes",
-    description: "Sharing thoughts",
+    title: 'BlogBytes',
+    description: 'Sharing thoughts',
 };
 
 export default function RootLayout({
@@ -29,7 +29,7 @@ export default function RootLayout({
                         <SnackbarProvider>
                             {children}
                         </SnackbarProvider>
-                    </ThemeProvider>,
+                    </ThemeProvider>
                 </ApolloProvider>
             </body>
         </html>

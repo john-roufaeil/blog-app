@@ -1,4 +1,5 @@
 'use client';
+
 import React, { createContext, useContext, useState } from 'react';
 import { Snackbar, Alert } from '@mui/material';
 
@@ -6,7 +7,7 @@ const SnackbarContext = createContext(null);
 
 export const useSnackbar = () => useContext(SnackbarContext);
 
-export const SnackbarProvider = ({ children }: { children: React.ReactNode }) => {
+export function SnackbarProvider({ children }: { children: React.ReactNode }) {
     const [open, setOpen] = useState(false);
     const [message, setMessage] = useState('');
     const [severity, setSeverity] = useState<'success' | 'error' | 'warning' | 'info'>('success');
@@ -31,4 +32,4 @@ export const SnackbarProvider = ({ children }: { children: React.ReactNode }) =>
             </Snackbar>
         </SnackbarContext.Provider>
     );
-};
+}
