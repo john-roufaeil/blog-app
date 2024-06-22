@@ -60,7 +60,7 @@ export const resolvers = {
     },
     Post: {
         user: async (parent: Post): Promise<User> => {
-            const response = await fetch(`https://jsonplaceholder.typicode.com/users/${parent.id}`);
+            const response = await fetch(`https://jsonplaceholder.typicode.com/users/${parent.userId}`);
             return await response.json() as User;
         },
         comments: async (parent: Post): Promise<Comment[]> => {
