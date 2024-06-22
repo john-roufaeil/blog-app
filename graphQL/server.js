@@ -1,5 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { ApolloServer } from '@apollo/server';
-import { gql } from 'apollo-server';
+import { gql } from 'apollo-server-micro';
 import fetch from 'node-fetch';
 
 export const typeDefs = gql`
@@ -69,53 +70,7 @@ export const resolvers = {
             return comments.filter((c) => c.postId === parent.id);
         },
     },
-    // Mutation: {
-    //     addPost: async (_, { title, body, email }) => {
-    //         let userId = 1;
-    //         let user = null;
-    //         if (email) {
-    //             const usersResponse = await fetch('https://jsonplaceholder.typicode.com/users');
-    //             const users = await usersResponse.json();
-    //             user = users.find((user) => user.email === email);
-    //             if (!user) {
-    //                 const createUserResponse = await fetch('https://jsonplaceholder.typicode.com/users', {
-    //                     method: 'POST',
-    //                     headers: {
-    //                         'Content-Type': 'application/json',
-    //                     },
-    //                     body: JSON.stringify({ id: userId, email }),
-    //                 });
-    //                 user = await createUserResponse.json();
-    //             }
-    //             userId = user.id;
-    //         }
-
-    //         const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({
-    //                 title,
-    //                 body,
-    //                 user
-    //             }),
-    //         });
-
-    //         return response.json();
-    //     },
-    // },
-
 };
-
-// const server = new ApolloServer({
-//     typeDefs,
-//     resolvers,
-// });
-
-// await startStandaloneServer(server, {
-//     listen: { port: 4000 },
-// });
 
 const apolloServer = new ApolloServer({
     typeDefs,

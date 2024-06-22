@@ -62,17 +62,3 @@ export const GET_DETAILS = gql`
         }
     }
 `;
-
-// export const ADD_POST = gql`
-//     mutation AddPost($title: String!, $body: String!, $email: String!) {
-//         addPost(title: $title, body: $body, email: $email) {
-//             id
-//             title
-//             body
-//             user {
-//                 id
-//                 email
-//             }
-//         }
-//     }
-// `;
