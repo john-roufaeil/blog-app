@@ -19,3 +19,17 @@ I used Next.js for server-side rendering, React.js for building UI components, T
 I used a mock API called [JSONPlaceholder](https://jsonplaceholder.typicode.com). I used its posts, users, and comments data. This mock API has data organized such that there are 10 users, each having 10 posts, where each post has 5 comments.
 
 I created the logo of the application using [Canva](https://canva.com).
+
+## Screenshots
+
+|![Homepage](public/homepage.png)|
+|---|
+|Homepage|
+
+|![Post](public/post.png)|
+|---|
+|Post|
+
+|![Create Post](public/create-post.png)|
+|---|
+|Create Post|
