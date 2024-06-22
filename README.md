@@ -8,9 +8,7 @@ To set up the project follow these steps:
 
 1. Install dependencies ```npm i```
 
-2. Run Apollo Server ```nodemon graphQL/server.js```
-
-3. Run Next.js ```npm run dev```
+2. Run Next.js ```npm run dev```
 
 ## Implementation
 
