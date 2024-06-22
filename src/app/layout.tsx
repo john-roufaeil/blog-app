@@ -5,6 +5,7 @@ import './globals.css';
 import { ThemeProvider } from '@mui/material/styles';
 import { SnackbarProvider } from '@/context/SnackbarContext';
 import theme from '../theme';
+import ScrollToTopBtn from './components/ScrollToTopBtn';
 
 const inter = Inter({ subsets: ['latin'] });
 const ApolloProvider = dynamic(() => import('../../lib/ApolloProvider'), { ssr: false });
@@ -28,6 +29,7 @@ export default function RootLayout({
                     <ThemeProvider theme={theme}>
                         <SnackbarProvider>
                             {children}
+                            <ScrollToTopBtn />
                         </SnackbarProvider>
                     </ThemeProvider>
                 </ApolloProvider>
