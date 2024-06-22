@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { ApolloServer } from '@apollo/server';
-import { gql } from 'apollo-server-micro';
+// import { ApolloServer } from '@apollo/server';
+import { ApolloServer, gql } from 'apollo-server-micro';
 import fetch from 'node-fetch';
 
 export const typeDefs = gql`
@@ -33,10 +33,6 @@ export const typeDefs = gql`
     post(id: String!): Post
     users: [User]
     comments: [Comment]
-  }
-
-  type Mutation {
-    addPost(title: String!, body: String!, email: String!): Post
   }
 `;
 

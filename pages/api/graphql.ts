@@ -1,8 +1,15 @@
+/* eslint-disable consistent-return */
 /* eslint-disable import/no-extraneous-dependencies */
 import { ApolloServer } from 'apollo-server-micro';
 import { MicroRequest } from 'apollo-server-micro/dist/types';
 import { ServerResponse, IncomingMessage } from 'http';
+import Cors from 'micro-cors';
 import { typeDefs, resolvers } from '../../graphQL/server';
+
+const cors = Cors({
+    origin: '*', // Adjust this to your allowed origins
+    allowCredentials: true,
+});
 
 const apolloServer = new ApolloServer({
     typeDefs,
@@ -17,17 +24,13 @@ export const config = {
     },
 };
 
-export default async function handler(req: MicroRequest, res: ServerResponse<IncomingMessage>) {
+const handler = async (req: MicroRequest, res: ServerResponse<IncomingMessage>) => {
+    if (req.method === 'OPTIONS') {
+        res.end();
+        return false;
+    }
     await startServer;
     await apolloServer.createHandler({ path: '/api/graphql' })(req, res);
-}
+};
 
-// let serverStart: Promise<void>;
-
-// export default async function handler(res: ServerResponse<IncomingMessage>, req: MicroRequest) {
-//     if (!serverStart) {
-//         serverStart = apolloServer.start();
-//     }
-//     await serverStart;
-//     await apolloServer.createHandler({ path: '/api/graphql' })(req, res);
-// }
+export default cors(handler);
